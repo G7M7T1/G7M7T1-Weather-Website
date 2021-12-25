@@ -69,7 +69,7 @@
                 if (data == "") {
                     $("#fail").fadeIn();
                 } else {
-                    $("#success").fadeIn();
+                    $("#success").html(data).fadeIn();
                 }
             });
         } else {
