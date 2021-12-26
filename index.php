@@ -34,21 +34,26 @@
         .alert {
             display: none;
         }
+
+        .fw-bold {
+            color: rgba(0,0,0,0.7);
+        }
     </style>
 </head>
 <body>
 <div class="jumbotron heroImage text-center">
     <div class="container">
-        <h1 class="display-4">Weather</h1>
+        <h1 class="display-4 fw-bold">Weather</h1>
         <p class="lead">Enter <strong>City Name</strong> You Want To Search</p>
+
         <form>
-            <div class="from-group col-md-7 mx-auto">
-                <input id="city" type="text" class="form-control" name="city" placeholder="Toronto, London, Paris...">
+            <div class="input-group mb-3 w-75 mx-auto">
+                <input id="city" type="text" class="form-control" placeholder="Toronto, London, Paris...">
+                <button id="findMyWeather" class="btn btn-outline-secondary" type="submit">Search</button>
             </div>
         </form>
-        <button id="findMyWeather" type="submit" name="submit" class="btn btn-light btn-lg mt-3">Search</button>
 
-        <div class="col-8 mx-auto mt-3">
+        <div class="col-5 mx-auto mt-3">
             <div id="success" class="alert alert-success">
                 Search Success
             </div>
@@ -64,6 +69,7 @@
 <script type="text/javascript">
     $("#findMyWeather").click(function (event) {
         event.preventDefault();
+        $(".alert").hide();
         if ($("#city").val() !== "") {
             $.get("scraper.php?city="+$("#city").val(), function (data) {
                 if (data == "") {
